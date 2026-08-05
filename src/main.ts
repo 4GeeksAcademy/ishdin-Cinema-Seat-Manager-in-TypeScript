@@ -145,25 +145,15 @@ function countSeats(theatreRoom: number[][]) {
 }
 
 function findAdjacentSeats(theatreRoom: number[][]) {
-  let adjacentSeats = [];
-  let finalAdjacentSeats = [];
-  let count = 0;
   for (let i = 0; i < theatreRoom.length; i++) {
     for (let j = 0; j < theatreRoom[i].length - 1; j++) {
       if (theatreRoom[i][j] === 0 && theatreRoom[i][j + 1] === 0) {
-        adjacentSeats.push([[i, j], [i, j + 1]]);
-        count++;
+        return `Row: ${i + 1}, Seats: ${j + 1} and ${j + 2}`;
       }
     }
   }
-  if (count === 0) {
-    console.log('No adjacent seats available.');
-  } else {
-    for (let i = 0; i < adjacentSeats.length; i++) {
-      finalAdjacentSeats.push(`Row: ${adjacentSeats[i][0][0] + 1}, Seats: ${adjacentSeats[i][0][1] + 1} and ${adjacentSeats[i][1][1] + 1}`);
-    }
-  }
-     return finalAdjacentSeats;
+
+  return 'No adjacent seats available.';
 }
 export { };
 
