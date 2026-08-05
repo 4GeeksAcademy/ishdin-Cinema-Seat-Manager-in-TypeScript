@@ -82,7 +82,7 @@ while (running) {
       break;
 
     default:
-      console.log(chalk.red("\n❌ Invalid option. Choose 1-4."));
+      console.log(chalk.red("\n❌ Invalid option. Choose 1-5."));
       await rl.question(chalk.dim("Press ENTER to continue..."));
       break;
   }
@@ -146,6 +146,7 @@ function countSeats(theatreRoom: number[][]) {
 
 function findAdjacentSeats(theatreRoom: number[][]) {
   let adjacentSeats = [];
+  let finalAdjacentSeats = [];
   let count = 0;
   for (let i = 0; i < theatreRoom.length; i++) {
     for (let j = 0; j < theatreRoom[i].length - 1; j++) {
@@ -159,9 +160,10 @@ function findAdjacentSeats(theatreRoom: number[][]) {
     console.log('No adjacent seats available.');
   } else {
     for (let i = 0; i < adjacentSeats.length; i++) {
-      console.log(`Row: ${adjacentSeats[i][0][0] + 1}, Seats: ${adjacentSeats[i][0][1] + 1} and ${adjacentSeats[i][1][1] + 1}`);
+      finalAdjacentSeats.push(`Row: ${adjacentSeats[i][0][0] + 1}, Seats: ${adjacentSeats[i][0][1] + 1} and ${adjacentSeats[i][1][1] + 1}`);
     }
   }
-     return adjacentSeats;
+     return finalAdjacentSeats;
 }
 export { };
+
