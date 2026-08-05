@@ -1,9 +1,8 @@
-let theaterRoom = [];
-let rows = 8;
-let columns = 10;
-for(let i = 0; i < rows; i++){
+function generateTheaterRoom(rows, seats) {
+    let theaterRoom = [];
+    for(let i = 0; i < rows; i++){
     let rowSeats = [];
-    for(let j = 0; j < columns; j++){
+    for(let j = 0; j < seats; j++){
         rowSeats.push(Math.floor(Math.random()*2));
       
     }
@@ -66,15 +65,21 @@ function countSeats() {
 //implement the function that searches two adjacent seats available (horizontally, in the same row) and returns their positions    
 function findAdjacentSeats() {
     let adjacentSeats = [];
+    let count = 0;
     for (let i = 0; i < theaterRoom.length; i++) {
         for (let j = 0; j < theaterRoom[i].length - 1; j++) {
             if (theaterRoom[i][j] === 0 && theaterRoom[i][j + 1] === 0) {
                 adjacentSeats.push([ [i, j], [i, j + 1] ]);
+                count++;
             }
         }
     }
-        for(let i = 0; i < adjacentSeats.length; i++){
-            console.log(`Row: ${adjacentSeats[i][0][0] + 1}, Seats: ${adjacentSeats[i][0][1] + 1} and ${adjacentSeats[i][1][1] + 1}`);
+        if (count === 0) {
+            console.log('No adjacent seats available.');
+        } else {
+            for(let i = 0; i < adjacentSeats.length; i++){
+                console.log(`Row: ${adjacentSeats[i][0][0] + 1}, Seats: ${adjacentSeats[i][0][1] + 1} and ${adjacentSeats[i][1][1] + 1}`);
+            }
         }
     // return adjacentSeats;
 }
